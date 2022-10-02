@@ -6,6 +6,7 @@ export default StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       paddingLeft: 10,
+      paddingRight: 10,
       paddingTop: Constants.statusBarHeight,
     },
     center: {
@@ -25,7 +26,7 @@ export default StyleSheet.create({
       marginBottom: 10,
     },
     picker: {
-      width: 350
+      width: '100%'
     },
     result: {
       flex: 1,

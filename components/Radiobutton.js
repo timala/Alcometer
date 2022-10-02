@@ -35,12 +35,12 @@ const styles=StyleSheet.create({
     width: '100%',
     marginBottom: 10,
     paddingLeft: 10,
-    paddingRight: 30,
+    paddingRight: 10,
     marginBottom: 30,
 },
-label: {
+/* label: {
     marginRight: 10,
-},
+}, */
 circle: {
     height: 28,
     width: 28,
