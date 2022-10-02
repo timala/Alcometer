@@ -6,8 +6,8 @@ import StyleSheet from './Styles'
 
 export default function App() {
   const [weight, setWeight] = useState('');
-  const [bottles, setBottles] = useState(0);
-  const [hours, setHours] = useState(0);
+  const [bottles, setBottles] = useState(1);
+  const [hours, setHours] = useState(1);
   const [gender, setGender] = useState(1);
   const [alcoholLevel, setAlcoholLevel] = useState(0);
 
@@ -31,22 +31,23 @@ export default function App() {
   const calculate = () => {
     if(weight === ''){
       Alert.alert("Insert weight")
-    }
+    }else{
     let litres = bottles * 0.33;
     let grams = litres * 8 * 4.5;
     let burning = weight.replace(',','.') / 10;
-    let gramsLeft = grams - burning * hours;
+    grams = grams - (burning * hours);
     let result = 0;
     if (gender === 1) {
-      result = gramsLeft / (weight.replace(',','.') * 0.7);
+      result = grams / (weight.replace(',','.') * 0.7);
     } else {
-      result = gramsLeft / (weight.replace(',','.') * 0.6);
+      result = grams / (weight.replace(',','.') * 0.6);
     }
     if (result < 0){
       setAlcoholLevel(0);
     } else{
     setAlcoholLevel(result);
   }}
+  }
 
   return (
     <View style={StyleSheet.container}>
@@ -80,9 +81,9 @@ export default function App() {
         <Text style={StyleSheet.field}>Gender</Text>
         <Radiobutton options={genderArray} onPress={(value) => setGender(value)} />
         <View style={StyleSheet.center}>
-          {alcoholLevel < 0.5 && <Text style={StyleSheet.green}>{alcoholLevel.toFixed(2)}</Text>}
-          {alcoholLevel >= 0.5 && alcoholLevel < 1 && <Text style={StyleSheet.yellow}>{alcoholLevel.toFixed(2)}</Text>}
-          {alcoholLevel >= 1 && <Text style={StyleSheet.red}>{alcoholLevel.toFixed(2)}</Text>}
+          {alcoholLevel === 0 && <Text style={StyleSheet.green}>{alcoholLevel.toFixed(2)}</Text>}
+          {alcoholLevel > 0 && alcoholLevel < 0.5 && <Text style={StyleSheet.yellow}>{alcoholLevel.toFixed(2)}</Text>}
+          {alcoholLevel >= 0.5 && <Text style={StyleSheet.red}>{alcoholLevel.toFixed(2)}</Text>}
         </View>
         <Button title='Calculate' onPress={calculate}/>
       </ScrollView>

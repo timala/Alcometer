@@ -53,32 +53,4 @@ export default StyleSheet.create({
       paddingBottom: 10,
       fontSize: 70
     },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        width: '100%',
-        marginBottom: 10,
-        paddingLeft: 10,
-        paddingRight: 30,
-        marginBottom: 30,
-    },
-    label: {
-        marginRight: 10,
-    },
-    circle: {
-        height: 28,
-        width: 28,
-        borderRadius: 15,
-        borderWidth: 1,
-        borderColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    checkedCircle: {
-      width: 15,
-      height: 15,
-      borderRadius: 7,
-      backgroundColor: '#000',
-    }
   });

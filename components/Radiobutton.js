@@ -1,10 +1,9 @@
-import { View, Text, Pressable } from 'react-native'
+import { StyleSheet, View, Text, Pressable } from 'react-native'
 import React from 'react'
 import { useState } from 'react'
-import StyleSheet from '../Styles'
 
 export default function Radiobutton({options, onPress}) {
-  // State variable for value of the radiobutton
+  // State variable for the value of the radiobutton
   const [value, setValue] = useState(1);
  
   const handlePress = (selected) => {
@@ -16,10 +15,10 @@ export default function Radiobutton({options, onPress}) {
     <>
     {
       options.map((item) => (
-        <View key={item.value} style={StyleSheet.buttonContainer}>
-          <Text style={StyleSheet.label}>{item.label}</Text>
-          <Pressable style={StyleSheet.circle} onPress={() => handlePress(item.value)}>
-            {value === item.value && <View style={StyleSheet.checkedCircle}/> }
+        <View key={item.value} style={styles.buttonContainer}>
+          <Text style={styles.label}>{item.label}</Text>
+          <Pressable style={styles.circle} onPress={() => handlePress(item.value)}>
+            {value === item.value && <View style={styles.checkedCircle}/> }
           </Pressable>
         </View>
       ))
@@ -27,3 +26,34 @@ export default function Radiobutton({options, onPress}) {
     </>
   )  
 }
+
+const styles=StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    width: '100%',
+    marginBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 30,
+    marginBottom: 30,
+},
+label: {
+    marginRight: 10,
+},
+circle: {
+    height: 28,
+    width: 28,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+checkedCircle: {
+  width: 15,
+  height: 15,
+  borderRadius: 7,
+  backgroundColor: '#000',
+}
+})
